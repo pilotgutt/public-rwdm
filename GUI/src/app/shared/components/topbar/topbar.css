@@ -1,0 +1,32 @@
+.topbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  
+  height: 100px;
+  padding: 0 16px;
+  background: rgb(217, 217, 217); /* dark navy */
+  color: rgb(0, 0, 0);
+  box-sizing: border-box;
+  border: 1px solid #d7d7d7;
+  border-color: black;
+}
+
+.logo {
+  height: 60px;
+}
+
+.center {
+  text-align: center;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.datetime {
+  font-size: 16px;
+  opacity: 0.8;
+}

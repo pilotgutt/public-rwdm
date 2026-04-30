@@ -1,0 +1,57 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sensor_env {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding: 12px;
+
+}
+
+.sensor_values {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+
+}
+
+.sensor_item {
+  display: flex;
+  flex-direction: column;
+}
+
+.imu-widget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+}
+
+.overlay-3d {
+  width: min(320px, 100%);
+  aspect-ratio: 1 / 1;
+  height: auto;
+  pointer-events: none;
+
+}
+
+.value{
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 4px;
+  color: rgb(47, 0, 255);
+  opacity: 1;
+  display: block;
+  visibility: visible;
+}

@@ -1,0 +1,30 @@
+<div class="panel">
+  <h2 class="panel-name">Overview</h2>
+
+  <div class="overview-grid">
+    
+  <div class="overview-grid-mantis">
+    <app-signal-indicator></app-signal-indicator>
+
+    <div class="mantis-right">
+      <div class="status-item">
+        <span class="package-loss-title">Packet loss</span>
+        <span class="status-label" [class.warn]="packetLoss > 0">{{ packetLoss }}</span>
+      </div>
+      <div class="status-item">
+        <span class="corrupt-files-title">Corrupt frames</span>
+        <span class="status-label" [class.warn]="corruptFrames > 0">{{ corruptFrames }}</span>
+      </div>
+      
+    </div>
+  </div>
+    
+    <app-stress-indicator
+      [pulseBpm]="pulseBpm"
+      [oxyPercent]="oxyPercent"
+      [bodyTemp]="bodyTemp">
+    </app-stress-indicator>
+      
+    </div>
+
+</div>

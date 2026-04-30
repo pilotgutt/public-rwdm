@@ -1,0 +1,30 @@
+<div class="signal">
+  <!-- TITLE -->
+  <div class="signal-title">Signal strength Mantis</div>
+
+  <!-- CONTENT ROW -->
+  <div class="signal-row">
+    
+    <div class="icon" [style.color]="color">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <!-- outer ring -->
+        <circle cx="60" cy="60" r="50" class="arc" [class.on]="bars >= 3" />
+
+        <!-- middle ring -->
+        <circle cx="60" cy="60" r="35" class="arc" [class.on]="bars >= 2" />
+
+        <!-- inner ring -->
+        <circle cx="60" cy="60" r="20" class="arc" [class.on]="bars >= 1" />
+
+        <!-- center dot -->
+        <circle cx="60" cy="60" r="8" class="dot" />
+      </svg>
+    </div>
+
+    <div class="text">
+      <div class="name" [style.color]="color">{{ level }}</div>
+      <div class="range">{{ guidelineText }}</div>
+      <div class="live">{{ rangeText }}</div>
+    </div>
+  </div>
+</div>

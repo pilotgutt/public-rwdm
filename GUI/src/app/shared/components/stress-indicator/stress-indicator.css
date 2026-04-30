@@ -1,0 +1,115 @@
+.stress {
+  width: auto;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-weight: 600;
+}
+
+.label {
+  font-weight: 600;
+  color: #444;
+}
+.label.mod { color: #f39c12; }
+.label.high { color: #e74c3c; }
+
+.bar {
+  position: relative;
+  width: 100%;
+}
+
+/* ticks layer sits over the bar */
+.ticks {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;                 /* align with bar */
+  height: 14px;           /* same as .track height */
+  pointer-events: none;
+}
+
+.tick {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  height: 14px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.tickLine {
+  width: 2px;
+  height: 14px;           /* full bar height */
+  background: rgba(0,0,0,0.45);
+}
+
+.tickLabel {
+  position: absolute;
+  top: 16px;              /* below the bar */
+  font-size: 12px;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+
+.track {
+  height: 14px;
+  border-radius: 999px;
+  background: #d5d5d5;     /* base track */
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.15);
+}
+
+.fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  transition: width 250ms ease, background 250ms ease;
+}
+
+/* Marker */
+.marker {
+  position: absolute;
+  top: -34px;              /* puts arrow above the bar */
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.marker.hidden {
+  display: none;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 10px solid #222;  /* arrow color */
+  margin-bottom: 4px;
+}
+
+.markerValue {
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.08);
+  color: #222;
+}
+
+.ends {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.7;
+}

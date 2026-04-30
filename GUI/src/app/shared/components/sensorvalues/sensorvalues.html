@@ -1,0 +1,124 @@
+<div class="panel">
+  <h2 class="title">Biometric values</h2>
+
+  <!-- Sensor cards -->
+  <div class="sensor" *ngFor="let s of sensors">
+    <div class="left">
+      <div class="topRow">
+        <div class="name">{{ s.name }}</div>
+
+        <div class="value" *ngIf="getSensorValue(s.key) !== null; else waiting">
+          {{ getSensorValue(s.key) }} {{ s.unit }}
+        </div>
+
+        <ng-template #waiting>
+          <div class="waiting">Waiting for data...</div>
+        </ng-template>
+      </div>
+
+      <div class="miniBar" *ngIf="getSensorValue(s.key) !== null">
+        <div class="miniTrack">
+          <!-- low limit tick -->
+          <div class="miniTick" [style.left.%]="pctForLimit('low', s.limits)">
+            <div class="miniTickLine"></div>
+            <div class="miniTickLabel">{{ s.limits.low }}</div>
+          </div>
+
+          <!-- high limit tick -->
+          <div class="miniTick" [style.left.%]="pctForLimit('high', s.limits)">
+            <div class="miniTickLine"></div>
+            <div class="miniTickLabel">{{ s.limits.high }}</div>
+          </div>
+
+          <!-- marker -->
+          <div class="miniMarker"
+               [style.left.%]="pctForValue(getSensorValue(s.key)!, s.limits)"
+               [class.low]="statusFor(getSensorValue(s.key)!, s.limits) === 'low'"
+               [class.high]="statusFor(getSensorValue(s.key)!, s.limits) === 'high'">
+            <div class="miniArrow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right side buttons -->
+    <div class="rightIcons">
+      <!-- Gear button -->
+      <button class="iconBtn"
+              (click)="openLimits(limitsDialog, s, $event)"
+              title="Set limits">
+        <svg viewBox="0 0 24 24" class="gearIcon" aria-hidden="true">
+          <path d="M19.14 12.94a7.43 7.43 0 0 0 .05-.94
+                   7.43 7.43 0 0 0-.05-.94l2.03-1.58
+                   a.5.5 0 0 0 .12-.64l-1.92-3.32
+                   a.5.5 0 0 0-.6-.22l-2.39.96
+                   a7.28 7.28 0 0 0-1.63-.94l-.36-2.54
+                   A.5.5 0 0 0 13.9 2h-3.8a.5.5 0 0 0-.49.42
+                   l-.36 2.54a7.28 7.28 0 0 0-1.63.94l-2.39-.96
+                   a.5.5 0 0 0-.6.22L2.71 8.48a.5.5 0 0 0 .12.64
+                   l2.03 1.58a7.43 7.43 0 0 0-.05.94
+                   7.43 7.43 0 0 0 .05.94l-2.03 1.58
+                   a.5.5 0 0 0-.12.64l1.92 3.32
+                   a.5.5 0 0 0 .6.22l2.39-.96
+                   c.5.38 1.04.69 1.63.94l.36 2.54
+                   a.5.5 0 0 0 .49.42h3.8a.5.5 0 0 0 .49-.42
+                   l.36-2.54c.59-.25 1.13-.56 1.63-.94l2.39.96
+                   a.5.5 0 0 0 .6-.22l1.92-3.32
+                   a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5
+                   A3.5 3.5 0 1 1 12 8a3.5 3.5 0 0 1 0 7.5z"/>
+        </svg>
+      </button>
+
+      <!-- Graph button (only this opens the plot) -->
+      <button class="iconBtn"
+              (click)="openPlot(plotDialog, s.name + ' vs Time', s.unit,
+                s.key === 'pulse' ? pulseSeries :
+                (s.key === 'o2' ? o2Series : bodyTempSeries))"
+              title="Open graph">
+        <img class="graph" src="graph.png" alt="Graph" />
+      </button>
+    </div>
+  </div>
+
+  <!-- ONE shared plot modal -->
+  <dialog #plotDialog class="modal">
+    <div class="modal-header" (mousedown)="startDrag($event, plotDialog)">
+      <h3>{{ activeTitle }} (last {{ maxSeconds }}s)</h3>
+      <button class="close" (click)="closePlot(plotDialog, $event)">✕</button>
+    </div>
+
+    <app-time-series-plot
+      [series]="activeSeries"
+      [title]="activeTitle"
+      [unit]="activeUnit"
+      [secondsOnScreen]="maxSeconds"
+      xAxisMode="timestamp">
+    </app-time-series-plot>
+  </dialog>
+
+  <!-- Limits modal -->
+  <dialog #limitsDialog class="modal limitsModal">
+    <div class="modal-header" (mousedown)="startDrag($event, limitsDialog)">
+      <h3>Set limits — {{ editingSensor?.name }}</h3>
+      <button class="close" (click)="closeLimits(limitsDialog, $event)">✕</button>
+    </div>
+
+    <div class="limitsBody" *ngIf="editingSensor as s">
+      <div class="row">
+        <label>Low limit ({{ s.unit }})</label>
+        <input type="number" [(ngModel)]="editLow">
+      </div>
+
+      <div class="row">
+        <label>High limit ({{ s.unit }})</label>
+        <input type="number" [(ngModel)]="editHigh">
+      </div>
+
+      <div class="actions">
+        <button (click)="closeLimits(limitsDialog, $event)">Cancel</button>
+        <button class="primary" (click)="saveLimits(limitsDialog)">Save</button>
+      </div>
+    </div>
+  </dialog>
+
+</div>

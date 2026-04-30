@@ -1,0 +1,28 @@
+<div class="sensor_env">
+  <div class="sensor_values">
+    <div class="sensor_item">
+      <div class="name_env">Water temperature</div>
+      <div class="value">
+        {{ waterTemp !== null ? (waterTemp + ' °C') : '---' }}
+      </div>
+    </div>
+
+    <div class="sensor_item">
+      <div class="name_env">Pressure</div>
+      <div class="value">
+        {{ pressuremBar !== null ? (pressuremBar + ' mbar') : '---' }}
+      </div>
+    </div>
+
+    <div class="sensor_item">
+      <div class="name_env">Depth</div>
+      <div class="value">
+        {{ depth_m !== null ? (depth_m + ' m') : '---' }}
+      </div>
+    </div>
+  </div>
+
+  <div class="imu-widget">
+    <app-mantis-imumodel class="overlay-3d"></app-mantis-imumodel>
+  </div>
+</div>

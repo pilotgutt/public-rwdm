@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-primary: "Roboto", sans-serif;
+  --color-dark: #000000;
+  --color-light: #ffffff;
+  --color-primary: #ffffff;
+  --color-secondary: #4e4e4e;
+  --color-accent: #010101;
+  --color-background: #f0f0f0;
+  --color-text: #000001;
+
+  --color-auto: #0ea600;
+  --color-manual: #ffcc00;
+  --color-stopped: #ff0000;
+  --color-failed: #808080;
+}
+
+body {
+  font-family: var(--font-primary);
+}
+
+html, body { 
+  height: 100%;
+  margin: 0;
+  overflow: hidden; 
+}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+app-root {
+  height: 100%;
+  display: block;
+}
