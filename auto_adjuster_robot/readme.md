@@ -5,7 +5,7 @@ There are two options for using the system. One is based on the signal strength 
 For both options, the Arduino_program.ino has to be flashed and run on the arduino.
 
 > [!NOTE]
-> Change com port in code to match your own.
+> Change COM port in code to match your own.
 
 ## If using the system based on signal strength
 
