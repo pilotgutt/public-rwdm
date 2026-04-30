@@ -4,9 +4,7 @@ The Arduino_program.ino is the program that runs on the arduino. Commands are se
 There are two options for using the system. One is based on the signal strength of the system, and the other is based on the divers' position.
 For both options, the Arduino_program.ino has to be flashed and run on the arduino.
 
-```
-Change COM port in codes to match your own
-```
+**Important:** Change COM port in code to match your own.
 
 ## If using the system based on signal strength
 
