@@ -14,17 +14,17 @@ For both options, the Arduino_program.ino has to be flashed and run on the ardui
 ## If using the system based on signal strength
 
 If you are auto adjusting the transducer based on signal strength then the following scripts are applicable:
-```
-auto_adjuster.py
-```
+
+- auto_adjuster.py
+
 
 ## If using the system based on position
 
 If you are auto adjusting the transducer based on the divers position, then the following scripts are applicable:
-```
-auto_adjuster_pos.py
-decawave.py
-```
+
+- auto_adjuster_pos.py
+- decawave.py
+
 
 In this project we have used these Decawave positioning nodes: https://www.qorvo.com/products/p/MDEK1001.
 
