@@ -2,7 +2,7 @@
 
 The Arduino_program.ino is the program that runs on the arduino. Commands are sent to this program to move the servos.
 There are two options for using the system. One is based on the signal strength of the system, and the other is based on the divers' position.
-For both options, the Arduino_program.ino has to be flashed and run on the arduino.
+### For both options, the Arduino_program.ino has to be flashed and run on the arduino.
 
 > [!WARNING]
 > This system is a proof of concept.
